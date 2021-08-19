@@ -27,7 +27,8 @@ namespace PetShop.Controllers
         // GET: PetController/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            var pet = _db.Pets.Find(id);
+            return View(pet);
         }
 
         // GET: PetController/Create
