@@ -47,8 +47,9 @@ namespace PetShop.Controllers
                 _db.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }
-            catch
+            catch(Exception e)
             {
+                var msg = e.Message;
                 return View();
             }
         }
@@ -56,16 +57,24 @@ namespace PetShop.Controllers
         // GET: PetController/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            var pet = _db.Pets.Find(id);
+            return View(pet);
         }
 
         // POST: PetController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(int id, Pets pet)
         {
             try
             {
+                var novoPet = _db.Pets.Find(id);
+                novoPet.Nome = pet.Nome;
+                novoPet.Raca = pet.Raca;
+                novoPet.Tipo = pet.Tipo;
+                novoPet.Idade = pet.Idade;
+
+                _db.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -83,7 +92,7 @@ namespace PetShop.Controllers
         // POST: PetController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Delete(int id, Pets pet)
         {
             try
             {

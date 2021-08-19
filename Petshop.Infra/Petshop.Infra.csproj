@@ -14,4 +14,8 @@
     <ProjectReference Include="..\Petshop.Domain\Petshop.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="EntityConfig\Repositories\" />
+  </ItemGroup>
+
 </Project>
