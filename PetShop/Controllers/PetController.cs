@@ -87,7 +87,8 @@ namespace PetShop.Controllers
         // GET: PetController/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            var pet = _db.Pets.Find(id);
+            return View(pet);
         }
 
         // POST: PetController/Delete/5
@@ -97,6 +98,9 @@ namespace PetShop.Controllers
         {
             try
             {
+                var petExiste = _db.Pets.Find(id);
+                _db.Remove(petExiste);
+                _db.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }
             catch
