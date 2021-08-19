@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Petshop.Domain.Entities;
+using Petshop.Infra.Context;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,10 +11,17 @@ namespace PetShop.Controllers
 {
     public class PetController : Controller
     {
+        private readonly ContextPetShop _db;
+
+        public PetController(ContextPetShop db)
+        {
+            _db = db;
+        }
+
         // GET: PetController
         public ActionResult Index()
         {
-            return View();
+            return View(_db.Pets.ToList());
         }
 
         // GET: PetController/Details/5
@@ -30,10 +39,12 @@ namespace PetShop.Controllers
         // POST: PetController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(Pets pet)
         {
             try
             {
+                _db.Add(pet);
+                _db.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }
             catch

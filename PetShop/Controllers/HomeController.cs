@@ -25,6 +25,7 @@ namespace PetShop.Controllers
         {
             
             _db.Cliente.ToList();
+            _db.Pets.ToList(); //esqueci o motivo disto??
             return View();
         }
 

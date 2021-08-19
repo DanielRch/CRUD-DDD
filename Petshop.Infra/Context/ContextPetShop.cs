@@ -20,6 +20,7 @@ namespace Petshop.Infra.Context
         }
 
         public DbSet<Cliente> Cliente { get; set; }
+        public DbSet<Pets> Pets { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
