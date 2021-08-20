@@ -13,7 +13,7 @@ namespace Petshop.Infra.EntityConfig.Repositories
     {
         public void Configure(EntityTypeBuilder<Pets> builder)
         {
-            builder.ToTable("Pets");
+            //builder.ToTable("Pets");
             builder.HasKey(x => x.IdPet);
         }
     }

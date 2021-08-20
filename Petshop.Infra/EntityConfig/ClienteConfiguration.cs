@@ -13,7 +13,7 @@ namespace Petshop.Infra.EntityConfig
     {
         public void Configure(EntityTypeBuilder<Cliente> builder)
         {
-            builder.ToTable("Cliente");
+            //builder.ToTable("Cliente");
             builder.HasKey(x => x.IdCliente);
         }
     }

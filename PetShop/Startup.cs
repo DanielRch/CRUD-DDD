@@ -39,10 +39,7 @@ namespace PetShop
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-
-            services.AddControllersWithViews();
-            services.AddRazorPages();
-
+            //services.AddRazorPages();
 
             services.AddControllersWithViews();
             services.AddDbContext<ContextPetShop>(opt => opt.UseSqlServer(Configuration.GetConnectionString("PetShop")));
