@@ -12,7 +12,7 @@ namespace PetShop.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+       private readonly ILogger<HomeController> _logger;
         private readonly ContextPetShop _db;
 
         public HomeController(ILogger<HomeController> logger, ContextPetShop db)
@@ -25,7 +25,7 @@ namespace PetShop.Controllers
         {
             
             _db.Cliente.ToList();
-            _db.Pets.ToList(); //esqueci o motivo disto??
+            _db.Pets.ToList();
             return View();
         }
 
